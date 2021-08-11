@@ -1,0 +1,24 @@
+.h3-title {
+    float: left;
+    margin-left: 32px;
+    margin-bottom: 26px;
+}
+
+#id-form-control {
+    width: 205px;
+    float: right;
+    margin-right: 70px;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+#span-title-icon {
+    right: 14px;
+}
+
+#row-mirrors-name{
+    height: 46px;
+    margin-top: 20px;
+    border-bottom: solid 2px #cccccc;
+    border-radius: 5px;
+}
