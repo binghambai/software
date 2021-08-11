@@ -1,0 +1,37 @@
+.mirrorsList {
+    width: 100%;
+}
+
+.tr {
+    border: 5px;
+}
+
+.tr:hover {
+    /*border-radius: 3px;*/
+    padding: 10px;
+    background-color: #dbf4fa;
+}
+.td-name{
+    float: left;
+}
+
+.td-name  a{
+    color: #4570cc;
+    font-size: large;
+    margin-left: 31px;
+}
+
+.td-date {
+    float: right;
+    margin-left: 450px;
+    margin-right: 25px;
+    font-size: large;
+    /*margin-left: 485px;*/
+    /*right: 50px;*/
+}
+
+.td-date-none {
+    padding-left: 590px;
+    font-size: large;
+}
+
