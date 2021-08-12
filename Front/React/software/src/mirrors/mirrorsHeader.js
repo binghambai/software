@@ -5,23 +5,21 @@ export default class MirrorsHeader extends Component {
     constructor(props) {
         super(props);
 
+
         this.state = {
-            val: ''
+            val: '',
+            needClean: false
         }
-        // console.log(this.state.val)
     }
 
     inputChange(e) {
-        console.log( 'get e.value:'+e.target.value)
-        console.log('get needClean:'+this.props.needClean)
-        // e.target.value = ''
-        // console.log('clean is' + e.target.value)
 
         this.props.msg(e.target.value)
+
     }
 
-    render() {
 
+    render() {
         return (
             <div>
                 <div className="row">
