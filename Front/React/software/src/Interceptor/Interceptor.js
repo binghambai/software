@@ -6,8 +6,6 @@ import NotFound from "../NotFound/NotFound";
 export default class MyInterceptor extends Component {
 
     render() {
-        console.log('in')
-        console.log(this.props.location.pathname)
         let path = this.props.location.pathname
         if(path === '/mirrors'){
             return (

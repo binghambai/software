@@ -56,4 +56,11 @@ componentDidMount() {
 3.react-router-dom  
 ```shell script
 npm install react-router-dom
+```  
+
+4.react-toastify 提示框插件  
+官方首页地址:https://www.npmjs.com/package/react-toastify  
+可自定义地址: https://fkhadra.github.io/react-toastify/introduction/
+```shell script
+npm install --save react-toastify
 ```

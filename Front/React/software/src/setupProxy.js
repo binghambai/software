@@ -11,4 +11,15 @@ module.exports = function(app) {
             }
         })
     );
+
+    app.use(
+        '/java',
+        proxy.createProxyMiddleware({
+            target: 'http://127.0.0.1:8080/java',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/java': ''
+            }
+        })
+    )
 };

@@ -15,15 +15,12 @@ export default class App extends Component{
                 <div className="App">
 
                     <Switch>
-
                         <Route path='/:path' component={MyInterceptor}/>
 
                         <Route path="/">
                             <Redirect to="/mirrors" />
                         </Route>
                     </Switch>
-
-
                 </div>
             </BrowserRouter>
         )

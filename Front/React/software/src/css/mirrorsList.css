@@ -3,11 +3,12 @@
 }
 
 .tr {
-    border: 5px;
+    border: 50px;
 }
 
 .tr:hover {
     /*border-radius: 3px;*/
+    /*width: 1000px;*/
     padding: 10px;
     background-color: #dbf4fa;
 }
@@ -26,12 +27,15 @@
     margin-left: 450px;
     margin-right: 25px;
     font-size: large;
-    /*margin-left: 485px;*/
-    /*right: 50px;*/
 }
 
 .td-date-none {
-    padding-left: 590px;
+    float: right;
+    width: 603px;
+    height: 30px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-right: 83px;
     font-size: large;
 }
 
