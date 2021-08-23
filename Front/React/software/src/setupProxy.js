@@ -5,6 +5,7 @@ module.exports = function(app) {
         '/api',
         proxy.createProxyMiddleware({
             target: 'http://127.0.0.1:9000/api',
+            // target: 'http://192.168.42.128:9000/api',
             changeOrigin: true,
             pathRewrite: {
                 '^/api': ''
@@ -15,7 +16,8 @@ module.exports = function(app) {
     app.use(
         '/java',
         proxy.createProxyMiddleware({
-            target: 'http://127.0.0.1:8080/java',
+            target: 'http://127.0.0.1:9200/java',
+            // target: 'http://192.168.42.128:9200/java',
             changeOrigin: true,
             pathRewrite: {
                 '^/java': ''

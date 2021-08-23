@@ -28,9 +28,7 @@ export default class TestMirrorstList extends Component {
     }
 
     componentDidMount() {
-
         axios.get("/api/mirrors/").then(resp => {
-
             this.setState({
                 // initReqCount: 1,
                 filesInfo: resp.data.filesInfo
@@ -43,19 +41,11 @@ export default class TestMirrorstList extends Component {
 
     openDir(item) {
         if(!item.isDir) {
+            console.log('item isDir is: ',item.isDir)
             //需要下载
             console.log('download')
-
-            this.download(item.path, item.name)
-            toast('🦄 下载成功!', {
-                position: "bottom-right",
-                autoClose: 2000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            console.log(item)
+            this.download(item.url, item.name)
             return
         }
         axios.get(item.url).then(resp => {
@@ -68,33 +58,45 @@ export default class TestMirrorstList extends Component {
         })
     }
 
-    download (path, fileName) {
-        fetch('/java/download2?path=' + path + '&fileName='+fileName)
+    download (url, fileName) {
+        fetch('/java/download2?path=' + url + '&fileName='+fileName)
             .then(res => {
-                res.blob().then(blob => {
-                    let a = document.createElement('a');
-                    let url = window.URL.createObjectURL(blob);
-                    let filename = res.headers.get('Content-Disposition');
-                    if (filename) {
-                        filename = filename.split('=')[1]
-                        a.href = url;
-                        a.download = filename; //给下载下来的文件起个名字
-                        a.click();
-                        window.URL.revokeObjectURL(url);
-                        a = null;
-                    }
-                })
-            })
-            .catch(e => {
-                toast.error('🦄 下载失败!', {
-                    position: "bottom-right",
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
+                console.log('get status is :', res.ok)
+                if(res.ok){
+
+                    res.blob().then(blob => {
+                        let a = document.createElement('a');
+                        let url = window.URL.createObjectURL(blob);
+                        let filename = res.headers.get('Content-Disposition');
+                        if (filename) {
+                            filename = filename.split('=')[1]
+                            a.href = url;
+                            a.download = filename; //给下载下来的文件起个名字
+                            a.click();
+                            window.URL.revokeObjectURL(url);
+                            a = null;
+                        }
+                    })
+                    toast('🦄 下载成功!', {
+                        position: "bottom-right",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                } else {
+                    toast.error('🦄 下载失败!', {
+                        position: "bottom-right",
+                        autoClose: 2000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    });
+                }
             })
     }
 
@@ -104,9 +106,6 @@ export default class TestMirrorstList extends Component {
         let tmpList = [] // 最终显示使用的结果
         if(sv !== '') {
             this.state.filesInfo.map(o => {
-                // if(o.name === '...') {
-                //     newList.unshift(o)
-                // }
                 if (o.name.indexOf(sv) !== -1) {
                     newList.push(o)
                 }
@@ -147,7 +146,6 @@ export default class TestMirrorstList extends Component {
                 <div className="mirrorsList">
                     <table>
                         {
-
                             tmpList.map((item) => {
                                 return (
                                     <tr className="tr" onClick={this.openDir.bind(this, item)}>

@@ -38,10 +38,22 @@
             <artifactId>log4j</artifactId>
             <version>1.2.12</version>
         </dependency>
-        <!-- -->
-        <dependency>
-            <groupId></groupId>
-            <artifactId></artifactId>
-        </dependency>
     </dependencies>
+    <!-- 打包时，自动扫描检测主类，不加打包后无法运行，会报错没有主清单属性 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

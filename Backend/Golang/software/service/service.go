@@ -13,7 +13,9 @@ func ProcessFiles(dir string) *fi.FileInfoResponse{
 	fmt.Println("dir is ..........", dir)
 
 	//路径拼接
-	path := "D:/Go/PROJECT/src/software/mirrors" + dir
+	//path := "D:/Go/PROJECT/src/software/mirrors" + dir
+	path := "/root/go/mirrors" + dir
+	fmt.Println("path is :", path)
 	files := read.GetFiles(path)
 	//fmt.Println(files)
 	//说明是一个文件需要下载
@@ -52,9 +54,9 @@ func ProcessFiles(dir string) *fi.FileInfoResponse{
 }
 
 func GetFilesList(dir, httpUrl string)  *fi.CurDirResp{
-	fmt.Println("get dir is :",dir)
 	//路径拼接
-	path := "D:/Go/PROJECT/src/software/mirrors" + dir
+	path := "./mirrors" + dir
+	fmt.Println(path)
 	files := read.GetFiles(path)
 	if files == nil {
 		return nil
@@ -72,7 +74,7 @@ func GetFilesList(dir, httpUrl string)  *fi.CurDirResp{
 			Name:  "...",
 			Size:  0,
 			Date:  "...",
-			IsDir: false,
+			IsDir: true,
 			Url:   preUrl,
 		})
 	}
@@ -92,8 +94,6 @@ func GetFilesList(dir, httpUrl string)  *fi.CurDirResp{
 		}
 		fileInfos = append(fileInfos, *tmpFile)
 	}
-	fmt.Println(httpUrl)
-
 
 	resp.FilesInfo = fileInfos
 	return resp
