@@ -16,9 +16,14 @@ import java.io.*;
 public class FileDownloadsService {
         public void download2(String path, String fileName, HttpServletResponse response) {
             //本机存放文件的路径
-            String absolutePath = path + fileName;
-            System.out.println(absolutePath);
-            File file = new File(path, fileName);
+            String filePath =  path.split("/api/mirrors/")[1];
+
+            String relativePath = "/root/software/backen/mirrors/";
+            String absolutePath = relativePath + filePath;
+            
+
+            System.out.println("absolutePath is " + absolutePath);
+            File file = new File(relativePath, fileName);
             if (!file.exists()) {
                 return;
             }

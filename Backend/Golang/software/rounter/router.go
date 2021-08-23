@@ -1,7 +1,6 @@
 package rounter
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"software/middeWare"
@@ -23,7 +22,7 @@ func Routers() *gin.Engine{
 
 	r.GET("/api/mirrors/*paths", func(c *gin.Context) {
 		dir := c.Param("paths")
-		fmt.Println(dir[len(dir)-1])
+		//fmt.Println(dir[len(dir)-1])
 		if dir[len(dir)-1] != 47 {  // 末尾不是/ 字符，就提示信息并返回
 			c.JSON(http.StatusMethodNotAllowed, gin.H{
 				"message": "url has error, loss a str '/'",
