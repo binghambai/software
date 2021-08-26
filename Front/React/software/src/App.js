@@ -5,7 +5,7 @@ import './App.css';
 import './css/header.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import MyInterceptor from "./Interceptor/Interceptor";
+import Interceptor from "./Interceptor/Interceptor";
 
 export default class App extends Component{
 
@@ -15,7 +15,7 @@ export default class App extends Component{
                 <div className="App">
 
                     <Switch>
-                        <Route path='/:path' component={MyInterceptor}/>
+                        <Route path='/:path' component={Interceptor}/>
 
                         <Route path="/">
                             <Redirect to="/mirrors" />

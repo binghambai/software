@@ -1,17 +1,16 @@
 import React, {Component} from "react";
-import {Tooltip, Whisper} from "rsuite";
+
 import axios from "axios";
-
-import 'rsuite/dist/styles/rsuite-default.css';
-
+import {Tooltip, Whisper} from "rsuite";
 import { toast } from 'react-toastify';
 
+import 'rsuite/dist/styles/rsuite-default.css';
 import 'react-toastify/dist/ReactToastify.css';
-import '../css/mirrorsList.css'
-import '../css/middleHeader.css'
+import '../../css/mirrorsList.css'
+import '../../css/middleHeader.css'
 
 toast.configure()
-export default class TestMirrorstList extends Component {
+export default class MirrorsLists extends Component {
 
     constructor(props) {
         super(props);
@@ -41,10 +40,7 @@ export default class TestMirrorstList extends Component {
 
     openDir(item) {
         if(!item.isDir) {
-            console.log('item isDir is: ',item.isDir)
             //需要下载
-            console.log('download')
-            console.log(item)
             this.download(item.url, item.name)
             return
         }
@@ -54,16 +50,14 @@ export default class TestMirrorstList extends Component {
                 filesInfo: resp.data.filesInfo
             })
         }).catch(err =>{
-            console.log(err)
+            console.log("in open dir, server has err")
         })
     }
 
     download (url, fileName) {
         fetch('/java/download2?path=' + url + '&fileName='+fileName)
             .then(res => {
-                console.log('get status is :', res.ok)
                 if(res.ok){
-
                     res.blob().then(blob => {
                         let a = document.createElement('a');
                         let url = window.URL.createObjectURL(blob);
@@ -97,7 +91,9 @@ export default class TestMirrorstList extends Component {
                         progress: undefined,
                     });
                 }
-            })
+            }).catch(err => {
+                console.log("in download, server has err!")
+        })
     }
 
     render() {

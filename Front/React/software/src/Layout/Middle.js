@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
+
+import News from "../items/news/news";
+
+import MirrorsLists from "../items/mirrors/MirrorsLists"
 import '../css/middle.css'
-import MirrorsList from "../mirrors/mirrorsList";
-import MirrorsHeader from "../mirrors/mirrorsHeader";
-import TestMirrorsList from "../mirrors/testMirrorsList"
-import News from "../News/news";
+
 export default class Middle extends Component{
 
     constructor(props) {
@@ -15,7 +16,6 @@ export default class Middle extends Component{
     }
 
     message(msg){
-        console.log('father get :'+ msg)
         this.setState({
             searchVal: msg
         })
@@ -32,7 +32,7 @@ export default class Middle extends Component{
             <div className="container">
                 <div className="row row-offcanvas row-offcanvas-right">
                     <div className="col-xs-12 col-sm-9">
-                        <TestMirrorsList/>
+                        <MirrorsLists/>
                     </div>
                     <div className="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
                         <News/>

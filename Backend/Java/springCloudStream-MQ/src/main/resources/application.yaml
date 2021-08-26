@@ -1,0 +1,26 @@
+# 端口号
+server:
+  port: 8081
+
+# rabbitmq
+# 使用的环境是rabbit
+spring:
+  application:
+    name: producer
+  rabbitmq:
+    host: 192.168.42.128
+    port: 5672
+    username: admin
+    password: 123456
+  cloud:
+    stream:
+#      default: group-1
+      bindings:
+        test-mq-name:
+          destination: test-mq-name
+        test-mq-name-out:
+          destination: test-mq-name
+#        output:
+#          destination: itcast-area
+#        input:
+#          destination: itcast-area

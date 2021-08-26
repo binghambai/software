@@ -1,29 +1,47 @@
 import React,{Component} from "react";
-import MyIndex from "../myIndex/MyIndex";
-import {Redirect} from "react-router-dom";
-import NotFound from "../NotFound/NotFound";
+import {Redirect, Route} from "react-router-dom";
 
-export default class MyInterceptor extends Component {
+import Mirrors from "../items/Mirrors";
+import Home from "../items/Home";
+import Blog from "../items/Blog";
+import Feed from "../items/Feed";
+
+export default class Interceptor extends Component {
 
     render() {
         let path = this.props.location.pathname
-        if(path === '/mirrors'){
-            return (
-                <div>
-                    <MyIndex/>
-                </div>
-            )
-        }else if(path.startsWith('/mirrors') && path.length > 8){
-            return (
-                    <Redirect to="/mirrors" />
+        console.log(path)
+        switch (path) {
+            case '/mirrors':
+                return (
+                    <div>
+                        <Mirrors isActive = {3}/>
+                    </div>
                 )
-        }else {
-            return (
-                <div>
-                    <NotFound/>
-                </div>
-            )
-
+            case '/home':
+                return (
+                    <div>
+                        <Home isActive = {0}/>
+                    </div>
+                )
+            case '/blog':
+                return (
+                    <div>
+                        <Blog isActive = {1}/>
+                    </div>
+                )
+            case '/feed':
+                return (
+                    <div>
+                        <Feed isActive = {2}/>
+                    </div>
+                )
+            default:
+                return (
+                    <div>
+                        <Redirect to="/mirrors" />
+                    </div>
+                )
         }
     }
 

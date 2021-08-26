@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import "../css/news.css"
+import "../../css/news.css"
 
 export default class News extends Component{
     constructor(props) {
