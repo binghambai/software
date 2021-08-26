@@ -17,7 +17,7 @@ public class FilesDownloadsController {
 
 
     @RequestMapping("/java/download2")
-    public void download2(@RequestParam String path, String fileName, HttpServletResponse response) {
+    public void download2(String path, String fileName, HttpServletResponse response) {
         fileDownloadsService.download2(path, fileName, response);
     }
 }
